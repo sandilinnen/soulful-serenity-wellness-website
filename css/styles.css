@@ -1,0 +1,590 @@
+@font-face {
+  font-family: "alluraregular";
+  src: url(../fonts/allura-regular-webfont.woff) format("woff2"),
+    url(../fonts/allura-regular-webfont.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "antic_sansregular";
+  src: url("../fonts/anticsans-regular-webfont.woff2") format("woff2"),
+    url("../fonts/anticsans-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "andika_new_basicbold";
+  src: url("../fonts/andikanewbasic-b-webfont.woff2") format("woff2"),
+    url("../fonts/andikanewbasic-b-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "andika_new_basicbold_italic";
+  src: url("../fonts/andikanewbasic-bi-webfont.woff2") format("woff2"),
+    url("../fonts/andikanewbasic-bi-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Reset default margin and padding */
+:root {
+  --soft-teal: #9ccdce;
+  --muted-sage: #b2d8c6;
+  --pale-lavender: #e6e1f3;
+  --warm-gray: #d1cbc4;
+  --deep-slate-blue: #4a6572;
+  --light-misty-teal: #d9f1f2;
+  --teal-colored-logo: #9dced0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* General page styles */
+body {
+  font-family: "antic", sans-serif;
+  line-height: 1.6;
+  color: var(--teal-colored-logo);
+  background-color: var(--light-misty-teal);
+  margin: 0;
+  padding: 0;
+}
+/* Apply border radius to all images except logos */
+img:not(.logo) {
+  border-radius: 10px !important;
+}
+
+/* Ensure images in boxes 4 and 5 get the border radius */
+#box-containers .box:nth-child(4) img,
+#box-containers .box:nth-child(5) img {
+  border-radius: 10px !important;
+}
+
+/* Ensure images in boxes 4 and 5 get the border radius */
+#box-containers .box:nth-child(4) img,
+#box-containers .box:nth-child(5) img {
+  border-radius: 10px !important;
+}
+h1,
+h2,
+h3 {
+  font-family: "andika_new_basicbold_italic", sans-serfif;
+  font-size: 1.5rem;
+  color: var(--deep-slate-blue);
+}
+
+p {
+  text-align: start;
+  color: var(--deep-slate-blue);
+  font-family: "antic_sansregular", sans-serif;
+  font-size: 1.2rem;
+}
+ul,
+li {
+  color: var(--deep-slate-blue);
+  list-style: none;
+}
+
+/* Header section styles */
+.header-container .tagline p {
+  font-size: 1.5rem;
+  color: white;
+  font-family: "alluraregular", sans-serif;
+}
+
+header {
+  text-align: center;
+  padding: 40px 0;
+  background-color: var(--teal-colored-logo);
+  color: white;
+}
+
+/* Header Classes */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 10px;
+  gap: 10px;
+}
+
+.header-container img {
+  max-width: 100px;
+  gap: 10px;
+}
+
+/* main container */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Mission Statement */
+section,
+.mission {
+  text-align: center;
+}
+
+.mission {
+  display: flex;
+  font-size: 1.2rem;
+  color: var(--deep-slate-blue);
+}
+
+.logo {
+  max-width: 100%;
+}
+
+/* Section styles */
+
+section {
+  margin: 30px 0;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Micheles welness storey */
+.our-mission {
+  margin: 30px 0;
+  padding: 20px;
+  background-color: white;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.our-mission img {
+  max-width: 100%;
+}
+/* about or healings */
+/* About Services Sections */
+.about img {
+  max-width: 100%;
+}
+/* Grid layout for the boxes */
+#box-containers {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr; /* Default to single column for mobile */
+}
+
+/* Styling for the images */
+#box-containers img {
+  margin-bottom: 10px;
+  max-height: 200px; /* Adjust this value as needed */
+}
+
+/* Styling for each box */
+#box-containers .box {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect for each box */
+#box-containers .box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for the headings */
+#box-containers h3 {
+  font-family: "andika_new_basicbold", sans-serif;
+  margin-bottom: 10px;
+  color: #333333;
+}
+
+/* Styling for the paragraphs */
+#box-containers p {
+  font-family: "antic_sansregular", sans-serif;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* Additional styling for the section heading */
+#box-containers h2 {
+  font-family: "andika_new_basicbold", sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+/* Media Queries */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media (min-width: 600px) {
+  #box-containers {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Position the last box to span both columns */
+  #box-containers .box:last-child {
+    grid-column: span 2;
+    height: 500px; /* Adjust the height as needed */
+  }
+
+  /* Center and enlarge the last box image */
+  #box-containers .box:last-child img {
+    width: 100%; /* Adjust the width as needed */
+    height: 100%; /* Adjust the height as needed */
+    object-fit: contain; /* Ensures the entire image is visible */
+    margin: 0 auto; /* Center the image */
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media (min-width: 768px) {
+  #box-containers {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Position the last box to span both columns */
+  #box-containers .box:last-child {
+    grid-column: span 2;
+    height: 400px; /* Adjust the height as needed */
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media (min-width: 992px) {
+  #box-containers {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  /* Position the fourth box to span all columns */
+  #box-containers .box:nth-child(4) {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: row; /* Image to the right */
+    align-items: center;
+  }
+
+  /* Specific styling for the fourth box image */
+  #box-containers .box:nth-child(4) img {
+    width: 50%; /* Adjust the width as needed */
+    height: auto; /* Adjust the height as needed */
+    object-fit: contain; /* Ensures the entire image is visible */
+    margin-left: 20px; /* Space between image and text */
+  }
+
+  /* Position the fifth box to span all columns */
+  #box-containers .box:nth-child(5) {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: row-reverse; /* Image to the left */
+    align-items: center;
+  }
+
+  /* Specific styling for the fifth box image */
+  #box-containers .box:nth-child(5) img {
+    width: 50%; /* Adjust the width as needed */
+    height: auto; /* Adjust the height as needed */
+    object-fit: contain; /* Ensures the entire image is visible */
+    margin-right: 20px; /* Space between image and text */
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  #box-containers {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  /* Center and enlarge the last box */
+  #box-containers .box:last-child {
+    grid-column: span 3;
+    justify-self: center;
+    width: 100%;
+  }
+}
+/* End of About Styles */
+
+/* Slide show for tesimonials */
+
+.testimonials {
+  text-align: center;
+  padding: 2em 0;
+}
+
+.testimonial-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.testimonial {
+  flex: 0 0 80%;
+  scroll-snap-align: center;
+  margin: 0 1em;
+  padding: 1em;
+  background-color: #f9f9f9;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial p {
+  font-style: italic;
+}
+
+.testimonial h4 {
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: var(--deep-slate-blue);
+}
+
+a {
+  color: #00796b;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #004d40;
+  text-decoration: underline;
+}
+
+/* Gallery Carousel Styles */
+.gallery-carousel {
+  text-align: center;
+  padding: 20px;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 10px;
+  padding: 10px;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 300px; /* Adjust the width as needed */
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.carousel-item p {
+  font-family: "antic_sansregular", sans-serif;
+  color: #666;
+  margin-top: 10px;
+}
+
+/* Media Queries */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media (min-width: 600px) {
+  .carousel-item {
+    width: 250px; /* Adjust the width as needed */
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media (min-width: 768px) {
+  .carousel-item {
+    width: 300px; /* Adjust the width as needed */
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media (min-width: 992px) {
+  .carousel-item {
+    width: 350px; /* Adjust the width as needed */
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .carousel-item {
+    width: 400px; /* Adjust the width as needed */
+  }
+}
+/* Responsive iframe container */
+.responsive-iframe-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  overflow: hidden;
+}
+
+/* Responsive iframe */
+.responsive-iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+/* Soulful Serenity Services Styles */
+.soulful-serenity-services {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.soulful-serenity-services h2 {
+  font-family: "andika_new_basicbold", sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.soulful-serenity-services h3 {
+  font-family: "andika_new_basicbold", sans-serif;
+  margin-top: 20px;
+  color: #555;
+}
+
+.soulful-serenity-services ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.soulful-serenity-services li {
+  font-family: "antic_sansregular", sans-serif;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.book-now-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book-now-button:hover {
+  background-color: #0056b3;
+}
+
+/* Media Queries */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media (min-width: 600px) {
+  .soulful-serenity-services {
+    padding: 30px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media (min-width: 768px) {
+  .soulful-serenity-services {
+    padding: 40px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media (min-width: 992px) {
+  .soulful-serenity-services {
+    padding: 50px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .soulful-serenity-services {
+    padding: 60px;
+  }
+}
+/* Booking Page */
+
+.book-now-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book-now-button:hover {
+  background-color: #0056b3;
+}
+
+/* End of Booking page */
+
+/* Footer styles */
+footer {
+  display: flex;
+  padding: 20px;
+  text-align: center;
+  background-color: var(--color-grey);
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+footer p {
+  margin: 0;
+  color: var(--color-white);
+}
+
+footer .social-icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+footer img {
+  width: 50px;
+  height: auto;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+footer img:active,
+footer img:hover {
+  transform: scale(1.1);
+}
+
+.google-review img {
+  transition: transform 0.3s ease;
+  display: block;
+  margin: auto;
+  margin-bottom: 15px;
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.google-review img:active,
+.google-review img:hover {
+  transform: scale(1.1);
+}
+
+/* End Of Footer Styles */
