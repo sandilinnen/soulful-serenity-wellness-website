@@ -72,8 +72,15 @@ h1,
 h2,
 h3 {
   font-family: "andika_new_basicbold_italic", sans-serfif;
-  font-size: 1.5rem;
   color: var(--deep-slate-blue);
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 1.8rem;
 }
 
 p {
@@ -107,13 +114,29 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 10px;
+  padding: 0 2rem;
   gap: 10px;
 }
 
 .header-container img {
   max-width: 100px;
   gap: 10px;
+}
+
+/* Add media query for mobile devices */
+@media (max-width: 600px) {
+  header {
+    padding: 20px 0;  /* Reduce top/bottom padding on mobile */
+  }
+  
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .header-container .tagline p {
+    margin: 0;
+  }
 }
 
 /* main container */
@@ -124,9 +147,13 @@ header {
 }
 
 /* Mission Statement */
-section,
-.mission {
+section {
+  margin: 30px 0;
+  padding: 20px;
   text-align: center;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .mission {
@@ -141,20 +168,11 @@ section,
 
 /* Section styles */
 
-section {
-  margin: 30px 0;
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 /* Micheles welness storey */
 .our-mission {
   margin: 30px 0;
   padding: 20px;
   background-color: white;
-
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -173,12 +191,6 @@ section {
   grid-template-columns: 1fr; /* Default to single column for mobile */
 }
 
-/* Styling for the images */
-#box-containers img {
-  margin-bottom: 10px;
-  max-height: 200px; /* Adjust this value as needed */
-}
-
 /* Styling for each box */
 #box-containers .box {
   background-color: #ffffff;
@@ -186,6 +198,17 @@ section {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Styling for the images */
+#box-containers img {
+  width: 100%;
+  height: 200px; /* Fixed height for uniformity */
+  object-fit: cover;
+  margin: 10px 0;
 }
 
 /* Hover effect for each box */
@@ -222,21 +245,27 @@ section {
 
 @media (min-width: 600px) {
   #box-containers {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on tablet */
   }
+}
 
-  /* Position the last box to span both columns */
-  #box-containers .box:last-child {
-    grid-column: span 2;
-    height: 500px; /* Adjust the height as needed */
+@media (min-width: 992px) {
+  #box-containers {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
   }
-
-  /* Center and enlarge the last box image */
-  #box-containers .box:last-child img {
-    width: 100%; /* Adjust the width as needed */
-    height: 100%; /* Adjust the height as needed */
-    object-fit: contain; /* Ensures the entire image is visible */
-    margin: 0 auto; /* Center the image */
+  
+  /* Remove special handling for 4th and 5th boxes */
+  #box-containers .box:nth-child(4),
+  #box-containers .box:nth-child(5) {
+    grid-column: auto; /* Reset grid column span */
+    display: flex;
+    flex-direction: column; /* Stack vertically like other boxes */
+  }
+  
+  #box-containers .box:nth-child(4) img,
+  #box-containers .box:nth-child(5) img {
+    width: 100%;
+    margin: 10px 0;
   }
 }
 
@@ -245,50 +274,12 @@ section {
   #box-containers {
     grid-template-columns: 1fr 1fr;
   }
-
-  /* Position the last box to span both columns */
-  #box-containers .box:last-child {
-    grid-column: span 2;
-    height: 400px; /* Adjust the height as needed */
-  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media (min-width: 992px) {
   #box-containers {
     grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  /* Position the fourth box to span all columns */
-  #box-containers .box:nth-child(4) {
-    grid-column: span 3;
-    display: flex;
-    flex-direction: row; /* Image to the right */
-    align-items: center;
-  }
-
-  /* Specific styling for the fourth box image */
-  #box-containers .box:nth-child(4) img {
-    width: 50%; /* Adjust the width as needed */
-    height: auto; /* Adjust the height as needed */
-    object-fit: contain; /* Ensures the entire image is visible */
-    margin-left: 20px; /* Space between image and text */
-  }
-
-  /* Position the fifth box to span all columns */
-  #box-containers .box:nth-child(5) {
-    grid-column: span 3;
-    display: flex;
-    flex-direction: row-reverse; /* Image to the left */
-    align-items: center;
-  }
-
-  /* Specific styling for the fifth box image */
-  #box-containers .box:nth-child(5) img {
-    width: 50%; /* Adjust the width as needed */
-    height: auto; /* Adjust the height as needed */
-    object-fit: contain; /* Ensures the entire image is visible */
-    margin-right: 20px; /* Space between image and text */
   }
 }
 
@@ -297,46 +288,97 @@ section {
   #box-containers {
     grid-template-columns: 1fr 1fr 1fr;
   }
-
-  /* Center and enlarge the last box */
-  #box-containers .box:last-child {
-    grid-column: span 3;
-    justify-self: center;
-    width: 100%;
-  }
 }
 /* End of About Styles */
 
-/* Slide show for tesimonials */
-
+/* Testimonial Slider */
 .testimonials {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
   text-align: center;
-  padding: 2em 0;
 }
 
 .testimonial-carousel {
+  position: relative;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.testimonial-track {
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  transition: transform 0.5s ease;
+  width: 100%;
+  transform: translateX(0); /* Reset initial position */
 }
 
 .testimonial {
-  flex: 0 0 80%;
-  scroll-snap-align: center;
-  margin: 0 1em;
-  padding: 1em;
-  background-color: #f9f9f9;
-
+  flex: 0 0 calc(100% - 120px); /* Keep the width calculation */
+  min-width: calc(100% - 120px); /* Add min-width to prevent shrinking */
+  padding: 20px;
+  margin: 0 60px;
+  background: white;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.testimonial.active {
+  display: block;
+  opacity: 1;
+}
+
 .testimonial p {
-  font-style: italic;
+  margin-bottom: 1em;
 }
 
 .testimonial h4 {
   margin-top: 1em;
-  font-weight: bold;
+}
+
+.prev, 
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--teal-colored-logo);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.prev { left: 0; }
+.next { right: 0; }
+
+.prev:hover,
+.next:hover {
+  background: var(--deep-slate-blue);
+}
+
+/* Dots */
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--warm-gray);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background: var(--teal-colored-logo);
 }
 
 button:hover {
@@ -588,3 +630,54 @@ footer img:hover {
 }
 
 /* End Of Footer Styles */
+
+/* Energy Healing Cards */
+.healing-cards {
+  display: grid;
+  gap: 2rem;
+  padding: 2rem 0;
+  grid-template-columns: 1fr;
+}
+
+.healing-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.healing-card:hover {
+  transform: translateY(-5px);
+}
+
+.healing-card .iconify {
+  color: var(--teal-colored-logo);
+  margin-bottom: 1rem;
+}
+
+.healing-card h3 {
+  margin: 1rem 0;
+  color: var(--deep-slate-blue);
+  font-size: 1.5rem;
+}
+
+.healing-card p {
+  color: var(--deep-slate-blue);
+  text-align: center;
+  margin: 0;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .healing-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .healing-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
