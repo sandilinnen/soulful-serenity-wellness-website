@@ -1,56 +1,91 @@
+// Testimonial carousel functionality
 document.addEventListener('DOMContentLoaded', function() {
-  const galleryTrack = document.querySelector('.gallery-track');
-  const galleryItems = document.querySelectorAll('.gallery-item');
-  const prevButton = document.querySelector('.gallery-prev');
-  const nextButton = document.querySelector('.gallery-next');
-  const dotsContainer = document.querySelector('.gallery-dots');
-  
-  let currentGalleryIndex = 0;
-  
-  // Create dots
-  galleryItems.forEach((_, index) => {
-    const dot = document.createElement('div');
-    dot.classList.add('gallery-dot');
-    if (index === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => goToSlide(index));
-    dotsContainer.appendChild(dot);
-  });
-  
-  function updateGallery() {
-    // Calculate the slide position based on item width (400px) plus margins (80px total)
-    const slideWidth = 480; // 400px + 80px margins
-    const offset = currentGalleryIndex * -slideWidth;
-    galleryTrack.style.transform = `translateX(${offset}px)`; // Use pixels instead of percentage
+    const track = document.querySelector('.testimonial-track');
+    const slides = Array.from(document.querySelectorAll('.testimonial'));
+    const nextButton = document.querySelector('.next');
+    const prevButton = document.querySelector('.prev');
+    const dotsContainer = document.querySelector('.dots');
     
-    // Update active dot
-    document.querySelectorAll('.gallery-dot').forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentGalleryIndex);
+    let currentIndex = 0;
+
+    function goToSlide(index) {
+        currentIndex = index;
+        track.style.transform = `translateX(-${index * 100}%)`;
+        
+        // Update dots
+        document.querySelectorAll('.dot').forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === index);
+        });
+    }
+
+    // Create dots
+    slides.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.classList.add('dot');
+        if (idx === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(idx));
+        dotsContainer.appendChild(dot);
     });
-  }
-  
-  function goToSlide(index) {
-    currentGalleryIndex = index;
-    updateGallery();
-  }
-  
-  function nextSlide() {
-    currentGalleryIndex = (currentGalleryIndex + 1) % galleryItems.length;
-    updateGallery();
-  }
-  
-  function prevSlide() {
-    currentGalleryIndex = (currentGalleryIndex - 1 + galleryItems.length) % galleryItems.length;
-    updateGallery();
-  }
-  
-  // Event listeners
-  prevButton.addEventListener('click', prevSlide);
-  nextButton.addEventListener('click', nextSlide);
-  
-  // Auto advance
-  let interval = setInterval(nextSlide, 5000);
-  
-  // Pause on hover
-  galleryTrack.addEventListener('mouseenter', () => clearInterval(interval));
-  galleryTrack.addEventListener('mouseleave', () => interval = setInterval(nextSlide, 5000));
+
+    // Navigation
+    nextButton.addEventListener('click', () => {
+        const nextIndex = (currentIndex + 1) % slides.length;
+        goToSlide(nextIndex);
+    });
+
+    prevButton.addEventListener('click', () => {
+        const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+        goToSlide(prevIndex);
+    });
+});
+
+// Gallery carousel functionality (if it exists in your code)
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryTrack = document.querySelector('.gallery-track');
+    if (!galleryTrack) return; // Skip if gallery doesn't exist
+
+    const gallerySlides = Array.from(document.querySelectorAll('.gallery-item'));
+    const galleryNext = document.querySelector('.gallery-next');
+    const galleryPrev = document.querySelector('.gallery-prev');
+    const galleryDots = document.querySelector('.gallery-dots');
+    
+    let galleryIndex = 0;
+
+    // Create gallery dots
+    gallerySlides.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.classList.add('gallery-dot');
+        if (idx === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToGallerySlide(idx));
+        galleryDots.appendChild(dot);
+    });
+
+    const dots = Array.from(document.querySelectorAll('.gallery-dot'));
+
+    function updateGalleryDots() {
+        dots.forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === galleryIndex);
+        });
+    }
+
+    function goToGallerySlide(index) {
+        const offset = index * -100;
+        galleryTrack.style.transform = `translateX(${offset}%)`;
+        galleryIndex = index;
+        updateGalleryDots();
+    }
+
+    function nextGallerySlide() {
+        const nextIndex = (galleryIndex + 1) % gallerySlides.length;
+        goToGallerySlide(nextIndex);
+    }
+
+    function prevGallerySlide() {
+        const prevIndex = (galleryIndex - 1 + gallerySlides.length) % gallerySlides.length;
+        goToGallerySlide(prevIndex);
+    }
+
+    // Event listeners for gallery
+    galleryNext.addEventListener('click', nextGallerySlide);
+    galleryPrev.addEventListener('click', prevGallerySlide);
 });

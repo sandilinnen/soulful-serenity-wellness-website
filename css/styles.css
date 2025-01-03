@@ -191,7 +191,11 @@ section h2 {
 /* about or healings */
 /* About Services Sections */
 .about img {
-  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
 }
 /* Grid layout for the boxes */
 #box-containers {
@@ -313,7 +317,6 @@ section h2 {
 
 .testimonial-carousel {
   position: relative;
-  padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
@@ -322,18 +325,32 @@ section h2 {
 .testimonial-track {
   display: flex;
   transition: transform 0.5s ease;
+}
+
+.testimonial-wrapper {
+  flex: 0 0 100%;
   width: 100%;
-  transform: translateX(0); /* Reset initial position */
+  padding: 0 60px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center; /* Center the testimonial card */
 }
 
 .testimonial {
-  flex: 0 0 calc(100% - 120px); /* Keep the width calculation */
-  min-width: calc(100% - 120px); /* Add min-width to prevent shrinking */
-  padding: 20px;
-  margin: 0 60px;
+  width: 100%;
+  padding: 30px;
   background: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* Center the content inside testimonials */
+.testimonial p,
+.testimonial h4 {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .testimonial.active {
@@ -349,6 +366,7 @@ section h2 {
   margin-top: 1em;
 }
 
+/* Navigation buttons */
 .prev, 
 .next {
   position: absolute;
@@ -364,8 +382,8 @@ section h2 {
   z-index: 2;
 }
 
-.prev { left: 0; }
-.next { right: 0; }
+.prev { left: 5px; }
+.next { right: 5px; }
 
 .prev:hover,
 .next:hover {
@@ -376,21 +394,23 @@ section h2 {
 .dots {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   margin-top: 20px;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: var(--warm-gray);
+  border: none;
+  background-color: var(--warm-gray);
   cursor: pointer;
+  padding: 0;
   transition: background-color 0.3s ease;
 }
 
 .dot.active {
-  background: var(--teal-colored-logo);
+  background-color: var(--teal-colored-logo);
 }
 
 button:hover {
@@ -470,21 +490,23 @@ a:hover {
 .gallery-dots {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
   margin-top: 20px;
 }
 
 .gallery-dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background: var(--warm-gray);
+  border: none;
+  background-color: var(--warm-gray);
   cursor: pointer;
+  padding: 0;
   transition: background-color 0.3s ease;
 }
 
 .gallery-dot.active {
-  background: var(--teal-colored-logo);
+  background-color: var(--teal-colored-logo);
 }
 
 /* Media Queries */
@@ -617,23 +639,26 @@ a:hover {
 
 /* Footer styles */
 footer {
-  display: flex;
-  padding: 20px;
+  background-color: var(--teal-colored-logo);
+  color: white;
+  padding: 2rem;
   text-align: center;
-  background-color: var(--color-grey);
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
+  margin-top: 40px;
+  width: 100%;
 }
 
+/* Center and style footer text */
 footer p {
-  margin: 0;
-  color: var(--color-white);
+  margin: 5px 0;
+  color: white;
+  text-align: center;
+  font-family: "antic_sansregular", sans-serif;
 }
 
 footer .social-icons {
   display: flex;
   gap: 15px;
+  justify-content: center;
   margin-bottom: 15px;
 }
 
@@ -650,6 +675,8 @@ footer img:hover {
 }
 
 .google-review img {
+  background-color: white;
+  padding: 5px;
   transition: transform 0.3s ease;
   display: block;
   margin: auto;
@@ -773,4 +800,39 @@ section h2 {
 /* Remove any competing styles */
 .soulful-serenity-services {
   padding: 20px;
+}
+
+/* Mission section logo */
+.logo-business {
+  text-align: center;
+}
+
+.logo-business img.logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 500px;
+  width: 100%;
+}
+
+/* Retreat list styling */
+.retreat-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.retreat-list li {
+  margin-bottom: 1.5rem;
+}
+
+.retreat-list p {
+  margin: 0.5rem 0;
+}
+
+.retreat-list .emoji {
+  margin-right: 0.5rem;
+}
+
+.retreat-list strong {
+  color: var(--deep-slate-blue);
 }
