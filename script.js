@@ -1,54 +1,56 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const track = document.querySelector('.testimonial-track');
-  const testimonials = document.querySelectorAll('.testimonial');
-  const prevButton = document.querySelector('.prev');
-  const nextButton = document.querySelector('.next');
-  const dotsContainer = document.querySelector('.dots');
+  const galleryTrack = document.querySelector('.gallery-track');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const prevButton = document.querySelector('.gallery-prev');
+  const nextButton = document.querySelector('.gallery-next');
+  const dotsContainer = document.querySelector('.gallery-dots');
   
-  let currentIndex = 0;
+  let currentGalleryIndex = 0;
   
   // Create dots
-  testimonials.forEach((_, index) => {
+  galleryItems.forEach((_, index) => {
     const dot = document.createElement('div');
-    dot.classList.add('dot');
+    dot.classList.add('gallery-dot');
     if (index === 0) dot.classList.add('active');
     dot.addEventListener('click', () => goToSlide(index));
     dotsContainer.appendChild(dot);
   });
   
-  function updateSlider() {
-    const offset = currentIndex * -100;
-    track.style.transform = `translateX(${offset}%)`;
+  function updateGallery() {
+    // Calculate the slide position based on item width (400px) plus margins (80px total)
+    const slideWidth = 480; // 400px + 80px margins
+    const offset = currentGalleryIndex * -slideWidth;
+    galleryTrack.style.transform = `translateX(${offset}px)`; // Use pixels instead of percentage
     
     // Update active dot
-    document.querySelectorAll('.dot').forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
+    document.querySelectorAll('.gallery-dot').forEach((dot, index) => {
+      dot.classList.toggle('active', index === currentGalleryIndex);
     });
   }
   
   function goToSlide(index) {
-    currentIndex = index;
-    updateSlider();
+    currentGalleryIndex = index;
+    updateGallery();
   }
   
   function nextSlide() {
-    currentIndex = (currentIndex + 1) % testimonials.length;
-    updateSlider();
+    currentGalleryIndex = (currentGalleryIndex + 1) % galleryItems.length;
+    updateGallery();
   }
   
   function prevSlide() {
-    currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
-    updateSlider();
+    currentGalleryIndex = (currentGalleryIndex - 1 + galleryItems.length) % galleryItems.length;
+    updateGallery();
   }
   
   // Event listeners
-  nextButton.addEventListener('click', nextSlide);
   prevButton.addEventListener('click', prevSlide);
+  nextButton.addEventListener('click', nextSlide);
   
   // Auto advance
   let interval = setInterval(nextSlide, 5000);
   
   // Pause on hover
-  track.addEventListener('mouseenter', () => clearInterval(interval));
-  track.addEventListener('mouseleave', () => interval = setInterval(nextSlide, 5000));
+  galleryTrack.addEventListener('mouseenter', () => clearInterval(interval));
+  galleryTrack.addEventListener('mouseleave', () => interval = setInterval(nextSlide, 5000));
 });
