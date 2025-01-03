@@ -152,10 +152,17 @@ header {
 section {
   margin: 30px 0;
   padding: 20px;
-  text-align: center;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+section h2 {
+  font-family: "andika_new_basicbold_italic", sans-serif;
+  color: var(--deep-slate-blue);
+  font-size: 2.5rem;
+  margin-top: 0;
+  text-align: center;
 }
 
 .mission {
@@ -189,8 +196,11 @@ section {
 /* Grid layout for the boxes */
 #box-containers {
   display: grid;
-  gap: 20px;
-  grid-template-columns: 1fr; /* Default to single column for mobile */
+  gap: 2rem;
+  padding: 2rem 0;
+  grid-template-columns: 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Styling for each box */
@@ -274,7 +284,7 @@ section {
 /* Medium devices (landscape tablets, 768px and up) */
 @media (min-width: 768px) {
   #box-containers {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -512,6 +522,7 @@ a:hover {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  text-align: left;
   background-color: #f9f9f9;
 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -519,7 +530,7 @@ a:hover {
 
 .soulful-serenity-services h2 {
   font-family: "andika_new_basicbold", sans-serif;
-  text-align: center;
+  text-align: left;
   margin-bottom: 20px;
   color: #333;
 }
@@ -533,6 +544,7 @@ a:hover {
 .soulful-serenity-services ul {
   list-style-type: none;
   padding: 0;
+  text-align: left;
 }
 
 .soulful-serenity-services li {
@@ -660,6 +672,8 @@ footer img:hover {
   gap: 2rem;
   padding: 2rem 0;
   grid-template-columns: 1fr;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .healing-card {
@@ -703,4 +717,60 @@ footer img:hover {
   .healing-cards {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+
+/* Center align the booking section */
+.book-session {
+  text-align: center;
+}
+
+.book-session h2,
+.book-session p {
+  text-align: center;
+}
+
+.book-session .book-now-button {
+  margin: 20px auto;
+  display: inline-block;
+}
+
+/* Services section specific */
+.soulful-serenity-services {
+  padding: 20px;
+}
+
+.soulful-serenity-services h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.soulful-serenity-services h3 {
+  margin-top: 1.5rem; /* Add space between service sections */
+  margin-bottom: 1rem;
+  color: var(--deep-slate-blue);
+}
+
+/* General section headings */
+section h2 {
+  font-family: "andika_new_basicbold_italic", sans-serif;
+  color: var(--deep-slate-blue);
+  font-size: 2.5rem;
+  margin-top: 0;
+  text-align: center;
+}
+
+/* Services section heading */
+.soulful-serenity-services h2,
+.article-container h2 {  /* Added this to catch both possible containers */
+  font-family: "andika_new_basicbold_italic", sans-serif;
+  color: var(--deep-slate-blue);
+  font-size: 2.5rem;
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Remove any competing styles */
+.soulful-serenity-services {
+  padding: 20px;
 }
