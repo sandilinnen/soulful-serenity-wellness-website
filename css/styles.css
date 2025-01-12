@@ -151,7 +151,7 @@ header {
 /* Mission Statement */
 section {
   margin: 30px 0;
-  padding: 20px;
+  padding: 60px 40px;
   background-color: white;
   border-radius: 8px;
 }
@@ -313,6 +313,7 @@ section h2 {
   margin: 0 auto;
   padding: 20px;
   text-align: center;
+  margin-bottom: 60px; /* Add space between sections */
 }
 
 .testimonial-carousel {
@@ -320,6 +321,7 @@ section h2 {
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
+  padding-top: 40px; /* Additional top padding for gallery section */
 }
 
 .testimonial-track {
@@ -429,84 +431,57 @@ a:hover {
 
 /* Gallery Slider Styles */
 .gallery-carousel {
-  text-align: center;
-  padding: 20px;
-}
-
-.gallery-container {
   position: relative;
-  padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
 }
 
+.gallery-container {
+  position: relative;
+  overflow: hidden;
+  touch-action: pan-y pinch-zoom;
+}
+
 .gallery-track {
   display: flex;
-  transition: transform 0.5s ease;
-  width: 100%;
-  align-items: center; /* Center items vertically */
+  transition: transform 0.3s ease;
+  cursor: grab;
+}
+
+.gallery-track:active {
+  cursor: grabbing;
 }
 
 .gallery-item {
-  flex: 0 0 400px; /* Fixed width instead of percentage */
-  min-width: 400px; /* Match the flex-basis */
-  margin: 0 40px;
-  border-radius: 20px;
-  overflow: hidden;
+  flex: 0 0 100%;
+  width: 100%;
+  padding: 0 60px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  height: 400px; /* Set consistent height */
 }
 
 .gallery-item img {
   width: 100%;
-  height: 600px; /* Keep height taller than width for vertical aspect */
-  object-fit: cover;
-  border-radius: 20px;
-  object-position: center 30%;
+  height: 100%;
+  object-fit: contain; /* This will maintain aspect ratio within the container */
+  border-radius: 0;
 }
 
-.gallery-prev, 
-.gallery-next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--teal-colored-logo);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 2;
-}
+@media (max-width: 768px) {
+  .gallery-prev,
+  .gallery-next {
+    display: none;
+  }
 
-.gallery-prev { left: 0; }
-.gallery-next { right: 0; }
-
-.gallery-prev:hover,
-.gallery-next:hover {
-  background: var(--deep-slate-blue);
-}
-
-.gallery-dots {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.gallery-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  border: none;
-  background-color: var(--warm-gray);
-  cursor: pointer;
-  padding: 0;
-  transition: background-color 0.3s ease;
-}
-
-.gallery-dot.active {
-  background-color: var(--teal-colored-logo);
+  .gallery-item {
+    height: 300px; /* Slightly smaller height on mobile */
+    padding: 0 20px;
+  }
 }
 
 /* Media Queries */
@@ -835,4 +810,162 @@ section h2 {
 
 .retreat-list strong {
   color: var(--deep-slate-blue);
+}
+
+/* Add touch-friendly styles */
+.testimonial-track {
+    touch-action: pan-y pinch-zoom;
+    cursor: grab;
+}
+
+.testimonial-track:active {
+    cursor: grabbing;
+}
+
+.testimonial-wrapper {
+    user-select: none; /* Prevents text selection while dragging */
+}
+
+@media (max-width: 768px) {
+    .prev, 
+    .next {
+        display: none; /* Hide arrows on mobile */
+    }
+    
+    .testimonial-wrapper {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Remove padding from the main wrapper/container only */
+    .wrapper,
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Keep normal padding for sections */
+    section {
+        padding: 40px 20px;
+        border-radius: 0;
+    }
+
+    /* Keep full padding for content boxes */
+    .about-content,
+    .services-content,
+    .testimonial,
+    .contact-content,
+    .pricing-content,
+    .faq-content {
+        padding: 20px 30px;
+    }
+
+    .testimonial-wrapper {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 768px) {
+
+
+    /* Remove border radius from sections with white backgrounds */
+    section.about,
+    section.services,
+    section.testimonials,
+    section.contact,
+    section.pricing,
+    section.faq {
+        border-radius: 0;
+    }
+
+    /* Keep vertical spacing between sections */
+    section {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Previous mobile styles remain the same */
+
+    /* Center retreats section */
+    .retreats {
+        text-align: center;
+    }
+
+    .retreats h2,
+    .retreats p {
+        text-align: center;
+    }
+}
+
+.retreats-title {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .retreats-title h2 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Previous mobile styles remain the same */
+
+    .testimonial p {
+        font-size: 16px;
+    }
+}
+
+/* Gallery dots styling */
+.gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.gallery-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--warm-gray);
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+.gallery-dot.active {
+    background-color: var(--teal-colored-logo);
+}
+
+@media (max-width: 768px) {
+    .testimonials,
+    .gallery-carousel {
+        margin-bottom: 40px; /* Slightly less space on mobile */
+    }
+}
+
+.gallery-prev, 
+.gallery-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--teal-colored-logo);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.gallery-prev { left: 5px; }
+.gallery-next { right: 5px; }
+
+.gallery-prev:hover,
+.gallery-next:hover {
+    background: var(--deep-slate-blue);
 }

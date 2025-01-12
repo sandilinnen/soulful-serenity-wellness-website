@@ -1,20 +1,67 @@
 // Testimonial carousel functionality
 document.addEventListener('DOMContentLoaded', function() {
     const track = document.querySelector('.testimonial-track');
-    const slides = Array.from(document.querySelectorAll('.testimonial'));
+    const slides = Array.from(document.querySelectorAll('.testimonial-wrapper'));
     const nextButton = document.querySelector('.next');
     const prevButton = document.querySelector('.prev');
     const dotsContainer = document.querySelector('.dots');
     
     let currentIndex = 0;
+    let startX;
+    let currentX;
+    let isDragging = false;
+
+    // Initialize touch events
+    track.addEventListener('touchstart', dragStart);
+    track.addEventListener('touchmove', drag);
+    track.addEventListener('touchend', dragEnd);
+
+    function dragStart(e) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        currentX = startX;
+        track.style.transition = 'none';
+    }
+
+    function drag(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        
+        const x = e.touches[0].clientX;
+        const diff = x - startX;
+        currentX = x;
+        track.style.transform = `translateX(calc(-${currentIndex * 100}% + ${diff}px))`;
+    }
+
+    function dragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+
+        const threshold = 50; // minimum distance for slide change
+        const diff = currentX - startX;
+
+        track.style.transition = 'transform 0.3s ease';
+
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0 && currentIndex > 0) {
+                currentIndex--;
+            } else if (diff < 0 && currentIndex < slides.length - 1) {
+                currentIndex++;
+            }
+        }
+
+        goToSlide(currentIndex);
+    }
 
     function goToSlide(index) {
         currentIndex = index;
         track.style.transform = `translateX(-${index * 100}%)`;
-        
-        // Update dots
+        updateDots();
+    }
+
+    function updateDots() {
         document.querySelectorAll('.dot').forEach((dot, idx) => {
-            dot.classList.toggle('active', idx === index);
+            dot.classList.toggle('active', idx === currentIndex);
         });
     }
 
@@ -27,15 +74,17 @@ document.addEventListener('DOMContentLoaded', function() {
         dotsContainer.appendChild(dot);
     });
 
-    // Navigation
+    // Keep existing button navigation
     nextButton.addEventListener('click', () => {
-        const nextIndex = (currentIndex + 1) % slides.length;
-        goToSlide(nextIndex);
+        if (currentIndex < slides.length - 1) {
+            goToSlide(currentIndex + 1);
+        }
     });
 
     prevButton.addEventListener('click', () => {
-        const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
-        goToSlide(prevIndex);
+        if (currentIndex > 0) {
+            goToSlide(currentIndex - 1);
+        }
     });
 });
 
@@ -50,6 +99,63 @@ document.addEventListener('DOMContentLoaded', function() {
     const galleryDots = document.querySelector('.gallery-dots');
     
     let galleryIndex = 0;
+    let startX;
+    let currentX;
+    let isDragging = false;
+
+    // Initialize touch events for gallery
+    galleryTrack.addEventListener('touchstart', dragStart);
+    galleryTrack.addEventListener('touchmove', drag);
+    galleryTrack.addEventListener('touchend', dragEnd);
+
+    function dragStart(e) {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        currentX = startX;
+        galleryTrack.style.transition = 'none';
+    }
+
+    function drag(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        
+        const x = e.touches[0].clientX;
+        const diff = x - startX;
+        currentX = x;
+        galleryTrack.style.transform = `translateX(calc(-${galleryIndex * 100}% + ${diff}px))`;
+    }
+
+    function dragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+
+        const threshold = 50;
+        const diff = currentX - startX;
+
+        galleryTrack.style.transition = 'transform 0.3s ease';
+
+        if (Math.abs(diff) > threshold) {
+            if (diff > 0 && galleryIndex > 0) {
+                galleryIndex--;
+            } else if (diff < 0 && galleryIndex < gallerySlides.length - 1) {
+                galleryIndex++;
+            }
+        }
+
+        goToGallerySlide(galleryIndex);
+    }
+
+    function goToGallerySlide(index) {
+        galleryIndex = index;
+        galleryTrack.style.transform = `translateX(-${index * 100}%)`;
+        updateGalleryDots();
+    }
+
+    function updateGalleryDots() {
+        document.querySelectorAll('.gallery-dot').forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === galleryIndex);
+        });
+    }
 
     // Create gallery dots
     gallerySlides.forEach((_, idx) => {
@@ -60,32 +166,18 @@ document.addEventListener('DOMContentLoaded', function() {
         galleryDots.appendChild(dot);
     });
 
-    const dots = Array.from(document.querySelectorAll('.gallery-dot'));
+    // Gallery navigation buttons
+    if (galleryNext && galleryPrev) {
+        galleryNext.addEventListener('click', () => {
+            if (galleryIndex < gallerySlides.length - 1) {
+                goToGallerySlide(galleryIndex + 1);
+            }
+        });
 
-    function updateGalleryDots() {
-        dots.forEach((dot, idx) => {
-            dot.classList.toggle('active', idx === galleryIndex);
+        galleryPrev.addEventListener('click', () => {
+            if (galleryIndex > 0) {
+                goToGallerySlide(galleryIndex - 1);
+            }
         });
     }
-
-    function goToGallerySlide(index) {
-        const offset = index * -100;
-        galleryTrack.style.transform = `translateX(${offset}%)`;
-        galleryIndex = index;
-        updateGalleryDots();
-    }
-
-    function nextGallerySlide() {
-        const nextIndex = (galleryIndex + 1) % gallerySlides.length;
-        goToGallerySlide(nextIndex);
-    }
-
-    function prevGallerySlide() {
-        const prevIndex = (galleryIndex - 1 + gallerySlides.length) % gallerySlides.length;
-        goToGallerySlide(prevIndex);
-    }
-
-    // Event listeners for gallery
-    galleryNext.addEventListener('click', nextGallerySlide);
-    galleryPrev.addEventListener('click', prevGallerySlide);
 });
