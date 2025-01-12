@@ -4,3 +4,11 @@
 2. "Stage" your changes (IN TERMINAL): `git add .`
 3. Commit your changes: `git commit -m "Change button color"` (for example)
 4. Push them to Github: `git push`
+
+In order:
+
+`git add .`
+
+`git commit -m "Make x change"`
+
+`git push`
