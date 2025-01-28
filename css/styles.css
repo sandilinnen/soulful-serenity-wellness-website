@@ -131,6 +131,7 @@ header {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
   }
+
 .email-button {
   display: inline-block;
   padding: 10px 20px;
@@ -200,6 +201,17 @@ section h2 {
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* .standalone-picture {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.standalone-picture img {
+  max-width: 100%;
+  border-radius: 10px;
+} */
 
 .our-mission img {
   max-width: 100%;
