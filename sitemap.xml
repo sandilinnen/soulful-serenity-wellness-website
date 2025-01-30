@@ -6,9 +6,9 @@
     xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
     xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
     <url>
-        <loc>https://https://www.soulfulserenitywellness.com/</loc>
-        <lastmod>2025-01-28T15:15:09.407Z</lastmod>
+        <loc>https://www.soulfulserenitywellness.com/</loc>
+        <lastmod>2025-01-30T00:00:00Z</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>1</priority>
+        <priority>1.0</priority>
     </url>
 </urlset>
